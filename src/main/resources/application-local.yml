@@ -1,0 +1,13 @@
+server.port: 8083
+
+spring:
+  webflux:
+    base-path: /webflux-example
+  sleuth:
+    reactor:
+      instrumentation-type: MANUAL
+
+api:
+  url: https://6177ddb69c328300175f5bdc.mockapi.io/api/
+  connectionTimeout: 10000
+  readTimeout: 10000
