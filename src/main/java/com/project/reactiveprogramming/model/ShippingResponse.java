@@ -11,8 +11,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderResponse {
+public class ShippingResponse {
 
-    private List<Product> similarProducts;
-    private Shipping shipping;
+    private Product product;
+    private List<ShippingOption> shippingOptions;
 }

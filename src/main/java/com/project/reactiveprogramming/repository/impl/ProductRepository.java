@@ -1,4 +1,4 @@
-package com.project.reactiveprogramming.repository;
+package com.project.reactiveprogramming.repository.impl;
 
 import com.project.reactiveprogramming.model.Product;
 import lombok.extern.slf4j.Slf4j;
@@ -13,13 +13,13 @@ public class ProductRepository {
 
     private final WebClient webclient;
 
-    public ProductRepository(
-            @Qualifier("api") WebClient webclient
-    ) {
+    public ProductRepository(@Qualifier("api") WebClient webclient) {
         this.webclient = webclient;
     }
 
     public Flux<Product> findProducts() {
+        log.info("Buscando produtos no products-api");
+
         return webclient.get()
                 .uri("/product")
                 .exchangeToFlux(clientResponse -> clientResponse.bodyToFlux(Product.class));

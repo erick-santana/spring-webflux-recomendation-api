@@ -1,5 +1,6 @@
-package com.project.reactiveprogramming.model;
+package com.project.reactiveprogramming.controller.request;
 
+import com.project.reactiveprogramming.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderRequest {
+public class RecommendationRequest {
 
     private String customerId;
     private List<Product> products;

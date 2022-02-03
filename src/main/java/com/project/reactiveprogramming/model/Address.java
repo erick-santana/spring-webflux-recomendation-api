@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Address {
 
+    private String customerId;
     private String street;
     private String number;
     private String district;

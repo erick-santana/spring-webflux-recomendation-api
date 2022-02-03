@@ -1,8 +1,7 @@
 package com.project.reactiveprogramming.service;
 
-import com.project.reactiveprogramming.exception.CustomerNotFoundException;
 import com.project.reactiveprogramming.model.Customer;
-import com.project.reactiveprogramming.repository.CustomerRepository;
+import com.project.reactiveprogramming.repository.impl.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

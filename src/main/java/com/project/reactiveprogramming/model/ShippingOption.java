@@ -12,8 +12,9 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Shipping {
+public class ShippingOption {
 
+    private String shippingId;
     private BigDecimal value;
     private LocalDate deadline;
 }
