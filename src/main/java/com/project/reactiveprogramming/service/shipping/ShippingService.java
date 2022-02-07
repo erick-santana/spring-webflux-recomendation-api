@@ -3,7 +3,7 @@ package com.project.reactiveprogramming.service.shipping;
 import com.project.reactiveprogramming.controller.response.RecommendationResponse;
 import com.project.reactiveprogramming.model.Address;
 import com.project.reactiveprogramming.model.Product;
-import com.project.reactiveprogramming.repository.impl.ShippingRepository;
+import com.project.reactiveprogramming.repository.ShippingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,6 +20,8 @@ public class ShippingService {
     private final ShippingAdapter shippingAdapter;
 
     public Mono<RecommendationResponse> addShippingOptions(List<Product> products, Address address) {
+        log.info("Adicionando opções de frete para o customer [{}] referente aos produtos similares encontrados", address.getCustomerId());
+
         return partnerRepository.getShipping(products, address).collectList()
                 .flatMap(shippingAdapter::toRecommendationResponse);
     }

@@ -1,11 +1,44 @@
 server.port: 8083
 
 spring:
+  application:
+    name: recommendation-api
   webflux:
-    base-path: /webflux-example
+    base-path: /recommendation-api
   sleuth:
     reactor:
-      instrumentation-type: MANUAL
+      instrumentation-type: DECORATE_ON_EACH
+
+logging:
+  pattern:
+    level: "%5p [${spring.zipkin.service.name:${spring.application.name:}}, traceId: %X{traceId:-}, spanId: %X{spanId:-}]"
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      minimumNumberOfCalls: 5
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+    shared:
+      slidingWindowSize: 100
+      permittedNumberOfCallsInHalfOpenState: 30
+      waitDurationInOpenState: 1s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+  instances:
+    productApi:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      minimumNumberOfCalls: 10
+      permittedNumberOfCallsInHalfOpenState: 3
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
 
 api:
   url: https://6177ddb69c328300175f5bdc.mockapi.io/api/

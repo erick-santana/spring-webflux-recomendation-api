@@ -1,7 +1,7 @@
 package com.project.reactiveprogramming.service;
 
 import com.project.reactiveprogramming.model.Address;
-import com.project.reactiveprogramming.repository.impl.ShippingRepository;
+import com.project.reactiveprogramming.repository.ShippingRepository;
 import com.project.reactiveprogramming.service.shipping.ShippingAdapter;
 import com.project.reactiveprogramming.service.shipping.ShippingService;
 import org.junit.jupiter.api.Test;

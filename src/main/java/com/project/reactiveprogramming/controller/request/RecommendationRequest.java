@@ -15,5 +15,6 @@ import java.util.List;
 public class RecommendationRequest {
 
     private String customerId;
+    private String cartId;
     private List<Product> products;
 }

@@ -1,6 +1,6 @@
 package com.project.reactiveprogramming.service;
 
-import com.project.reactiveprogramming.repository.impl.ProductRepository;
+import com.project.reactiveprogramming.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

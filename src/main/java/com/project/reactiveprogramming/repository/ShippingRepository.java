@@ -1,8 +1,8 @@
-package com.project.reactiveprogramming.repository.impl;
+package com.project.reactiveprogramming.repository;
 
 import com.project.reactiveprogramming.model.Address;
-import com.project.reactiveprogramming.model.ShippingResponse;
 import com.project.reactiveprogramming.model.Product;
+import com.project.reactiveprogramming.model.ShippingResponse;
 import com.project.reactiveprogramming.service.shipping.ShippingAdapter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,12 +17,10 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ShippingRepository {
 
-    public static final String PARTNER_NAME = "PartnerOne";
-
     private final ShippingAdapter shippingAdapter;
 
     public Flux<ShippingResponse> getShipping(List<Product> products, Address address) {
-        log.info("Calculando valor do frete com o parceiro [{}] para a cidade [{}]", PARTNER_NAME, address.getCustomerId());
+        log.info("Calculando valor do frete para o customer [{}]", address.getCustomerId());
 
         return Flux.just(products.stream()
                 .map(shippingAdapter::toShippingResponse)

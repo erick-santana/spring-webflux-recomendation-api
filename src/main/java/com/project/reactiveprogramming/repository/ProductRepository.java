@@ -1,4 +1,4 @@
-package com.project.reactiveprogramming.repository.impl;
+package com.project.reactiveprogramming.repository;
 
 import com.project.reactiveprogramming.model.Product;
 import lombok.extern.slf4j.Slf4j;

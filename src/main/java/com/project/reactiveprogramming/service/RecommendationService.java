@@ -21,9 +21,14 @@ public class RecommendationService {
 
     public Flux<RecommendationResponse> findRecommendations(RecommendationRequest recommendationRequest) {
         return customerService.findCustomer(recommendationRequest.getCustomerId())
-                .switchIfEmpty(Mono.error(new CustomerNotFoundException()))
-                .flatMap(customer -> productService.findSimilarProducts(recommendationRequest.getProducts()).collectList()
-                        .flatMap(similarProducts -> shippingService.addShippingOptions(similarProducts, customer.getAddress())))
-                .flatMapMany(Flux::just);
+                .onErrorResume(error -> Mono.error(new CustomerNotFoundException()))
+                .flatMap(customer -> productService.findSimilarProducts(recommendationRequest.getProducts())
+                        .collectList()
+                        .flatMap(similarProducts -> {
+                            if (similarProducts.isEmpty()) {
+                                return Mono.empty();
+                            }
+                            return shippingService.addShippingOptions(similarProducts, customer.getAddress());
+                        })).flatMapMany(Flux::just);
     }
 }

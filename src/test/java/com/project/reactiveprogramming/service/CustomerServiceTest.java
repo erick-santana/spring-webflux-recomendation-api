@@ -1,7 +1,7 @@
 package com.project.reactiveprogramming.service;
 
 import com.project.reactiveprogramming.model.Customer;
-import com.project.reactiveprogramming.repository.impl.CustomerRepository;
+import com.project.reactiveprogramming.repository.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,8 +42,7 @@ class CustomerServiceTest {
         when(customerRepository.findCustomers()).thenReturn(Flux.empty());
 
         StepVerifier.create(customerService.findCustomer(CUSTOMER_ID))
-                .expectNextCount(0)
-                .verifyComplete();
+                .expectError(NoSuchElementException.class).verify();
     }
 
     private Customer buildCustomer() {
