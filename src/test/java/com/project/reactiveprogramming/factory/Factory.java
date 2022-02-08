@@ -27,7 +27,7 @@ public class Factory {
                 .id("1")
                 .name("MyProduct")
                 .category("MyCategory")
-                .quantity(3)
+                .value(BigDecimal.valueOf(900))
                 .shippingOptions(List.of(buildShippingOption()))
                 .build();
     }

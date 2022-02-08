@@ -18,8 +18,6 @@ public class Product {
     private String name;
     private String category;
     private String description;
-    private int quantity;
-    private BigDecimal unitValue;
-    private BigDecimal totalAmount;
+    private BigDecimal value;
     private List<ShippingOption> shippingOptions;
 }
