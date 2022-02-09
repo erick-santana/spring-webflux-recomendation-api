@@ -32,13 +32,7 @@ resilience4j.circuitbreaker:
       eventConsumerBufferSize: 10
   instances:
     productApi:
-      registerHealthIndicator: true
-      slidingWindowSize: 10
-      minimumNumberOfCalls: 10
-      permittedNumberOfCallsInHalfOpenState: 3
-      waitDurationInOpenState: 5s
-      failureRateThreshold: 50
-      eventConsumerBufferSize: 10
+      baseConfig: default
 
 api:
   url: https://6177ddb69c328300175f5bdc.mockapi.io/api/

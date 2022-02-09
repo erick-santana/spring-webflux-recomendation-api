@@ -33,7 +33,7 @@ class RecommendationControllerTest {
 
         StepVerifier.create(recommendationController.findRecommendations(recommendationRequest))
                 .assertNext(response -> {
-                    assertThat(response.getSimilarProducts().get(0).getProduct().getName()).isEqualTo("MyProduct");
+                    assertThat(response.getSimilarProducts().get(0).getProduct().getName()).isEqualTo("AnyProduct");
                 }).verifyComplete();
     }
 
